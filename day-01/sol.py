@@ -12,5 +12,5 @@ three_highest = 0
 for i in range(3):
     mx = max(calories)
     three_highest += mx
-    print(three_highest)
     calories.remove(mx)
+print(three_highest)
