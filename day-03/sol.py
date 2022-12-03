@@ -1,8 +1,7 @@
 PRIO = ".abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
 
-def p1():
-    lines = open("input.txt").readlines()
+def p1(lines):
     totalSum = 0
     matches = []
     for line in lines:
@@ -17,4 +16,14 @@ def p1():
     print(totalSum)
 
 
-p1()
+def p2(lines):
+    totalSum = 0
+    for i in range(len(lines)):
+        if i % 3 == 0:
+            a, b, c = lines[i][:len(lines[i])-1], lines[i+1], lines[i+2]
+            c = set(a) & set(b) & set(c)
+            totalSum += PRIO.index(next(iter(c)))
+    print(totalSum)
+
+
+p2(open("input.txt").readlines())
