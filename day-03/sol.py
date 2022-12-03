@@ -18,11 +18,10 @@ def p1(lines):
 
 def p2(lines):
     totalSum = 0
-    for i in range(len(lines)):
-        if i % 3 == 0:
-            a, b, c = lines[i][:len(lines[i])-1], lines[i+1], lines[i+2]
-            c = set(a) & set(b) & set(c)
-            totalSum += PRIO.index(next(iter(c)))
+    for i in range(0, len(lines), 3):
+        a, b, c = lines[i][:len(lines[i])-1], lines[i+1], lines[i+2]
+        ch = set(a) & set(b) & set(c)
+        totalSum += PRIO.index(next(iter(ch)))
     print(totalSum)
 
 
