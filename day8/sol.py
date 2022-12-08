@@ -19,7 +19,7 @@ def invisible_in_row(current_height, r, c, max_rows) -> bool:
         if lines[i][c] >= current_height:
             up = True
             break
-    for i in range(r+1, max_rows, +1):
+    for i in range(r+1, max_rows):
         if lines[i][c] >= current_height:
             down = True
             break
@@ -57,7 +57,7 @@ def get_distance_row(current_height, r, c, max_rows) -> (int):
         up += 1
         if lines[i][c] >= current_height:
             break
-    for i in range(r+1, max_rows, +1):
+    for i in range(r+1, max_rows):
         down += 1
         if lines[i][c] >= current_height:
             break
@@ -76,4 +76,5 @@ def p2():
     print(scenic_score)
 
 
+p1()
 p2()
