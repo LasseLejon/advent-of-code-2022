@@ -18,14 +18,15 @@ def two_steps_apart(head_p, tail_p):
 
 
 def move_head(head_p, direction):
-    if direction == 'R':
-        head_p.x += 1
-    elif direction == 'L':
-        head_p.x -= 1
-    elif direction == 'U':
-        head_p.y += 1
-    elif direction == 'D':
-        head_p.y -= 1
+    match direction:
+        case 'R':
+            head_p.x += 1
+        case 'L':
+            head_p.x -= 1
+        case 'U':
+            head_p.y += 1
+        case 'D':
+            head_p.y -= 1
 
 
 def move_tail(head_p, tail_p, direction, prev_x, prev_y):
@@ -47,8 +48,8 @@ def move_tail(head_p, tail_p, direction, prev_x, prev_y):
 def p1(lines):
     head_p = Position(0, 0)
     tail_p = Position(0, 0)
-    visited = []
-    visited.append((0, 0))
+    visited = set()
+    visited.add((0, 0))
     for line in lines:
         direction = line[0]
         steps = line[1]
@@ -58,8 +59,7 @@ def p1(lines):
             move_head(head_p, direction)
             if two_steps_apart(head_p, tail_p):
                 move_tail(head_p, tail_p, direction, prev_x, prev_y)
-                if (tail_p.x, tail_p.y) not in visited:
-                    visited.append((tail_p.x, tail_p.y))
+                visited.add((tail_p.x, tail_p.y))
     print(len(visited))
     visualize(visited)
 
